@@ -1,12 +1,14 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import DataGrid from '../components/DataGrid/index';
+import Theme from '../../models/Theme';
 
-interface Props {
+interface InfiniteGridProps {
     className?: string;
+    theme: Theme;
 }
 
-const InfiniteGrid = (props: Props) => {
+const InfiniteGrid = (props: InfiniteGridProps) => {
     return (
         <div id="InfiniteGrid" className={props.className}>
             <DataGrid rowHeight={50} columnWidth={250}/>
@@ -17,5 +19,5 @@ const InfiniteGrid = (props: Props) => {
 export default styled(InfiniteGrid)`
     height: 100%;
     width: 100%;
-    background-color: #333;
+    background-color: ${(props: InfiniteGridProps) => props.theme.background};
 `;

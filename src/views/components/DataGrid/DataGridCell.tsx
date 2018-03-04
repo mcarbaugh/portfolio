@@ -1,10 +1,12 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import Theme from '../../../models/Theme';
 
 interface DataGridCellProps {
+    content?: string | number | boolean | undefined | null;
     className?: string;
     style?: React.CSSProperties;
-    content?: string | number | boolean | undefined | null;
+    theme: Theme;
 }
 
 const DataGridCell = (props: DataGridCellProps) => {
@@ -19,9 +21,9 @@ const DataGridCell = (props: DataGridCellProps) => {
 };
 
 export default styled(DataGridCell)`
-    color: #ddd;
-    background-color: #333;
-    border: 1px dotted #666;
+    color: ${(props: DataGridCellProps) => props.theme.primary};
+    background-color: ${(props: DataGridCellProps) => props.theme.background};
+    border: 1px dotted ${(props: DataGridCellProps) => props.theme.secondary};
     display: flex;
     align-items: center;
     justify-content: center;

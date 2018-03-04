@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Title from '../components/Title';
 import dictionary from '../dictionaries/Home';
+import Theme from '../../models/Theme';
 
-interface Props {
+interface HomeProps {
     className?: string;
+    theme?: Theme;
 }
 
-const Home = (props: Props) => {
+const Home = (props: HomeProps) => {
     return (
         <div className={props.className}>
             <Title>{dictionary.title}</Title>
@@ -23,4 +25,5 @@ const Home = (props: Props) => {
 export default styled(Home)`
     height: 100%;
     width: 100%;
+    background-color: ${(props: HomeProps) => props.theme ? props.theme.background : ''};
 `;

@@ -9,19 +9,19 @@ import {
     ScrollParams,
 } from 'react-virtualized';
 
-export interface Props {
+export interface DataGridProps {
     id?: string;
     rowHeight?: number;
     columnWidth?: number;
 }
 
-export interface State {
+export interface DataGridState {
     rowCount: number;
     columnCount: number;
 }
 
-export default class DataGrid extends React.Component<Props, State> {
-    public constructor(props: Props) {
+export default class DataGrid extends React.Component<DataGridProps, DataGridState> {
+    public constructor(props: DataGridProps) {
         super(props);
         this._handleScroll = this._handleScroll.bind(this);
         this.state = DEFAULT_STATE;
