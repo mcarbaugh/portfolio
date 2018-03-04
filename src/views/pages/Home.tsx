@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Title from '../components/Title';
 import dictionary from '../dictionaries/Home';
@@ -12,8 +13,8 @@ const Home = (props: Props) => {
         <div className={props.className}>
             <Title>{dictionary.title}</Title>
             <ul>
-                <li>Infinite Grid</li>
-                <li>Color Inspector</li>
+                <li><Link to={'/infinite-grid'}>Infinite Grid</Link></li>
+                <li><Link to={'/color-inspector'}>Color Inspector</Link></li>
             </ul>
         </div>
     );
