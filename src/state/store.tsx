@@ -1,9 +1,9 @@
 import { createStore } from 'redux';
-import reducer from './reducer';
+import { rootReducer } from './reducer';
 
 const configureStore = () => {
     return createStore(
-        reducer,
+        rootReducer,
     );
 };
 

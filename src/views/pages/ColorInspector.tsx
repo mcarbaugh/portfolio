@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const ColorInspector = () => {
     return (
-        <div />
+        <div id={'ColorInpsector'}/>
     );
 };
 

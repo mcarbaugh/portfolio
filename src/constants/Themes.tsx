@@ -1,7 +1,7 @@
 
 const enum Themes {
-    DARK,
-    LIGHT,
+    DARK = 'DARK',
+    LIGHT = 'LIGHT',
 }
 
 export default Themes;

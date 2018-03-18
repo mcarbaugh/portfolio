@@ -1,4 +1,4 @@
-import Theme from '../../models/Theme';
+import { Theme } from '../../models/Theme';
 
 const dark: Theme = {
     primary: '#ddd',

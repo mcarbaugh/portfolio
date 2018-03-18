@@ -1,5 +1,10 @@
-const EMPTY_OBJECT = {};
+import { combineReducers } from 'redux';
+import { themeReducer, ThemeState } from './ducks/theme/reducers';
 
-const reducer = () => EMPTY_OBJECT;
+export interface RootState {
+    theme: ThemeState;
+}
 
-export default reducer;
+export const rootReducer = combineReducers<RootState>({
+    theme: themeReducer,
+});
