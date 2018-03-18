@@ -12,6 +12,7 @@ interface HomeProps {
 const Home = (props: HomeProps) => {
     return (
         <div id={'Home'} className={props.className}>
+        <a href="https://github.com/mcarbaugh/portfolio">Github</a>
             <ConnectedColorThemePicker />
             <Title>{dictionary.title}</Title>
             <ul>
