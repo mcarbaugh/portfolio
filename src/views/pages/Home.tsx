@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Title from '../components/Title';
 import dictionary from '../dictionaries/Home';
+import ConnectedColorThemePicker from '../containers/ConnectedColorThemePicker';
 
 interface HomeProps {
     className?: string;
@@ -11,6 +12,7 @@ interface HomeProps {
 const Home = (props: HomeProps) => {
     return (
         <div id={'Home'} className={props.className}>
+            <ConnectedColorThemePicker />
             <Title>{dictionary.title}</Title>
             <ul>
                 <li><Link to={'/infinite-grid'}>Infinite Grid</Link></li>
@@ -23,5 +25,6 @@ const Home = (props: HomeProps) => {
 export default styled(Home)`
     height: 100%;
     width: 100%;
+    color: ${props => props.theme.primary};
     background-color: ${props => props.theme.background};
 `;

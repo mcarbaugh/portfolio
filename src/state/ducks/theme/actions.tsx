@@ -6,7 +6,7 @@ export interface SetTheme {
     theme: Theme;
 }
 
-export const setThemes = (theme: Theme): SetTheme => {
+export const setTheme = (theme: Theme): SetTheme => {
     return {
         type: types.SET_THEME,
         theme,
