@@ -1,4 +1,5 @@
 import * as React from 'react';
+import styled from 'styled-components';
 import DataGridCell from './DataGridCell';
 import { DEFAULT_STATE, DEFAULT_COLUMN_WIDTH, DEFAULT_ROW_HEIGHT } from './constants';
 import {
@@ -13,6 +14,7 @@ export interface DataGridProps {
     id?: string;
     rowHeight?: number;
     columnWidth?: number;
+    className?: string;
 }
 
 export interface DataGridState {
@@ -20,7 +22,7 @@ export interface DataGridState {
     columnCount: number;
 }
 
-export default class DataGrid extends React.Component<DataGridProps, DataGridState> {
+class DataGrid extends React.Component<DataGridProps, DataGridState> {
     public constructor(props: DataGridProps) {
         super(props);
         this._handleScroll = this._handleScroll.bind(this);
@@ -31,22 +33,26 @@ export default class DataGrid extends React.Component<DataGridProps, DataGridSta
         const {
             rowHeight,
             columnWidth,
+            className,
         } = this.props;
         return (
-            <AutoSizer>
-                { (dimensions: Dimensions) =>
-                    <Grid
-                        height={dimensions.height}
-                        width={dimensions.width}
-                        rowCount={this.state.rowCount}
-                        columnCount={this.state.columnCount}
-                        rowHeight={rowHeight || DEFAULT_ROW_HEIGHT}
-                        columnWidth={columnWidth || DEFAULT_COLUMN_WIDTH}
-                        cellRenderer={this._cellRenderer}
-                        onScroll={this._handleScroll}
-                    />
-                }
-            </AutoSizer>
+            <div className={className}>
+                <AutoSizer>
+                    { (dimensions: Dimensions) =>
+                        <Grid
+                            height={dimensions.height}
+                            width={dimensions.width}
+                            rowCount={this.state.rowCount}
+                            columnCount={this.state.columnCount}
+                            rowHeight={rowHeight || DEFAULT_ROW_HEIGHT}
+                            columnWidth={columnWidth || DEFAULT_COLUMN_WIDTH}
+                            cellRenderer={this._cellRenderer}
+                            onScroll={this._handleScroll}
+                            style={{outline: 'none', overflow: 'scroll'}}
+                        />
+                    }
+                </AutoSizer>
+            </div>
         );
     }
 
@@ -87,3 +93,7 @@ export default class DataGrid extends React.Component<DataGridProps, DataGridSta
         }
     }
 }
+
+export default styled(DataGrid)`
+    flex: 1;
+`;

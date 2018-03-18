@@ -23,7 +23,6 @@ const ColorThemePicker = (props: Props) => {
 
 export default styled(ColorThemePicker)`
     height: 2em;
-    width: 100%;
     display: flex;
     align-content: stretch;
     align-items: stretch;
