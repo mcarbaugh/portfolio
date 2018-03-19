@@ -9,9 +9,8 @@ import Home from './views/pages/Home';
 import ColorInspector from './views/pages/ColorInspector';
 import DataGrid from './views/pages/InfiniteGrid';
 import ConnectedThemeProvider from './views/containers/ConnectedThemeProvider';
-import './index.css';
-
 import ConnectedColorThemePicker from './views/containers/ConnectedColorThemePicker';
+import './index.css';
 
 const history = createBrowserHistory();
 const store = configureStore();

@@ -13,7 +13,7 @@ interface Props {
 
 const ColorThemePicker = (props: Props) => {
     return (
-        <div className={props.className}>
+        <div id="color-theme-picker" className={props.className}>
             <Description>Choose a theme:</Description>
             <PrimaryButton onClick={props.setDarkTheme}>Dark</PrimaryButton>
             <PrimaryButton onClick={props.setLightTheme}>Light</PrimaryButton>

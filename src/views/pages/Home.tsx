@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
+import StyledLink from '../components/StyledLink';
 import styled from 'styled-components';
 import Title from '../components/Title';
 import dictionary from '../dictionaries/Home';
@@ -13,16 +13,15 @@ const Home = (props: HomeProps) => {
         <div id={'Home'} className={props.className}>
             <Title>{dictionary.title}</Title>
             <ul>
-                <li><Link to={'/infinite-grid'}>Infinite Grid</Link></li>
-                <li><Link to={'/color-inspector'}>Color Inspector</Link></li>
+                <li><StyledLink to={'/infinite-grid'}>Infinite Grid</StyledLink></li>
+                <li><StyledLink to={'/color-inspector'}>Color Inspector</StyledLink></li>
             </ul>
         </div>
     );
 };
 
 export default styled(Home)`
-    height: 100%;
-    width: 100%;
+    flex: 1;
     color: ${props => props.theme.primary};
     background-color: ${props => props.theme.background};
 `;
