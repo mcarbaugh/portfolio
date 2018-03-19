@@ -29,5 +29,6 @@ export default styled(ColorThemePicker)`
     justify-content: left;
     padding: 5px;
     color: ${props => props.theme.primary};
+    background-color: ${props => props.theme.background};
     border-bottom: 1px solid ${props => props.theme.secondary};
 `;

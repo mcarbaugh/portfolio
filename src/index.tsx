@@ -11,19 +11,24 @@ import DataGrid from './views/pages/InfiniteGrid';
 import ConnectedThemeProvider from './views/containers/ConnectedThemeProvider';
 import './index.css';
 
+import ConnectedColorThemePicker from './views/containers/ConnectedColorThemePicker';
+
 const history = createBrowserHistory();
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedThemeProvider>
-      <Router history={history}>
-        <Switch>
-          <Route path={'/color-inspector'} component={ColorInspector} />
-          <Route path={'/infinite-grid'} component={DataGrid} />
-          <Route path={'/*'} component={Home} />
-        </Switch>
-      </Router>
+      <div id="app">
+        <ConnectedColorThemePicker />
+        <Router history={history}>
+          <Switch>
+            <Route path={'/color-inspector'} component={ColorInspector} />
+            <Route path={'/infinite-grid'} component={DataGrid} />
+            <Route path={'/*'} component={Home} />
+          </Switch>
+        </Router>
+      </div>
     </ConnectedThemeProvider>
   </Provider>,
   document.getElementById('root') as HTMLElement

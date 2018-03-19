@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Title from '../components/Title';
 import dictionary from '../dictionaries/Home';
-import ConnectedColorThemePicker from '../containers/ConnectedColorThemePicker';
 
 interface HomeProps {
     className?: string;
@@ -12,8 +11,6 @@ interface HomeProps {
 const Home = (props: HomeProps) => {
     return (
         <div id={'Home'} className={props.className}>
-        <a href="https://github.com/mcarbaugh/portfolio">Github</a>
-            <ConnectedColorThemePicker />
             <Title>{dictionary.title}</Title>
             <ul>
                 <li><Link to={'/infinite-grid'}>Infinite Grid</Link></li>
