@@ -21,9 +21,11 @@ const DataGridCell = (props: DataGridCellProps) => {
 export default styled(DataGridCell)`
     color: ${props => props.theme.primary};
     background-color: ${props => props.theme.background};
-    border: 1px dotted ${props => props.theme.secondary};
+    border-right: 1px dotted ${props => props.theme.secondary};
+    border-bottom: 1px dotted ${props => props.theme.secondary};
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 0.9em;
+    box-sizing: border-box;
 `;
