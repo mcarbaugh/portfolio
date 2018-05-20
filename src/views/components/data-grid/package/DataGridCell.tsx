@@ -26,6 +26,6 @@ export default styled(DataGridCell)`
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.9em;
+    font-size: 1em;
     box-sizing: border-box;
 `;

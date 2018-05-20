@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import DataGrid from '../components/DataGrid/index';
+import DataGrid from '../components/data-grid/index';
 
 interface InfiniteGridProps {
     className?: string;

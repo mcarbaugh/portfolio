@@ -10,6 +10,7 @@ import ColorInspector from './views/pages/ColorInspector';
 import DataGrid from './views/pages/InfiniteGrid';
 import ConnectedThemeProvider from './views/containers/ConnectedThemeProvider';
 import ConnectedColorThemePicker from './views/containers/ConnectedColorThemePicker';
+import DragDrop from './views/pages/DragDrop';
 import './index.css';
 
 const history = createBrowserHistory();
@@ -24,6 +25,7 @@ ReactDOM.render(
           <Switch>
             <Route path={'/color-inspector'} component={ColorInspector} />
             <Route path={'/infinite-grid'} component={DataGrid} />
+            <Route path={'/drag-drop'} component={DragDrop} />
             <Route path={'/*'} component={Home} />
           </Switch>
         </Router>

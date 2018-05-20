@@ -15,6 +15,7 @@ const Home = (props: HomeProps) => {
             <ul>
                 <li><StyledLink to={'/infinite-grid'}>Infinite Grid</StyledLink></li>
                 <li><StyledLink to={'/color-inspector'}>Color Inspector</StyledLink></li>
+                <li><StyledLink to={'/drag-drop'}>Drag Drop</StyledLink></li>
             </ul>
         </div>
     );
