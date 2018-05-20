@@ -8,10 +8,6 @@ import {
     DragSourceSpec,
 } from 'react-dnd';
 
-interface ListViewItemState {
-    background?: string;
-}
-
 interface ListViewItemProps {
     className?: string;
     data?: object | string | number | boolean;
@@ -24,7 +20,7 @@ interface DragSourceProps {
 
 type Props = ListViewItemProps & DragSourceProps;
 
-class ListViewItem extends React.Component<Props, ListViewItemState> {
+class ListViewItem extends React.Component<Props> {
     public constructor(props: Props) {
         super(props);
     }
@@ -44,6 +40,21 @@ class ListViewItem extends React.Component<Props, ListViewItemState> {
     }
 }
 
+const StyledListViewItem = styled(ListViewItem)`
+    display: flex;
+    align-items: stretch;
+    align-content: stretch;
+    margin: 5px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: ${props => props.theme.primary};
+    background-color: ${props => props.theme.background};
+    padding: 5px;
+    & span {
+        margin: auto;
+    }
+`;
+
 const dragSourceSpec: DragSourceSpec<{}> = {
     beginDrag: () => {
         return {};
@@ -60,20 +71,5 @@ const dragSourceCollector = (connector: DragSourceConnector, monitor: DragSource
     };
 };
 
-const DraggableListViewItem =
-    DragSource<ListViewItemProps>('blah', dragSourceSpec, dragSourceCollector)(ListViewItem);
-
-export default styled(DraggableListViewItem)`
-    display: flex;
-    align-items: stretch;
-    align-content: stretch;
-    margin: 5px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: ${props => props.theme.primary};
-    background-color: ${props => props.theme.background};
-    padding: 5px;
-    & span {
-        margin: auto;
-    }
-`;
+export default DragSource<ListViewItemProps>
+    ('ListViewItem', dragSourceSpec, dragSourceCollector)(StyledListViewItem);

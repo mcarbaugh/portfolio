@@ -2,13 +2,28 @@ import * as React from 'react';
 import ListViewItem from './ListViewItem';
 import styled from 'styled-components';
 import { List } from 'immutable';
+import { Theme } from '../../../../models/Theme';
+
+import {
+    ConnectDropTarget,
+    DropTarget,
+    DropTargetConnector,
+    DropTargetMonitor,
+    DropTargetSpec,
+} from 'react-dnd';
 
 interface ListViewProps<T> {
     data: List<T>;
     className?: string;
+    theme?: Theme;
 }
 
-type Props<T> = ListViewProps<T>;
+interface DropTargetProps {
+    canDrop: boolean;
+    connectDropTarget: ConnectDropTarget;
+}
+
+type Props<T> = ListViewProps<T> & DropTargetProps;
 
 class ListView<T> extends React.Component<Props<T>> {
 
@@ -20,10 +35,13 @@ class ListView<T> extends React.Component<Props<T>> {
     public render() {
         const {
             className,
+            connectDropTarget,
         } = this.props;
 
-        return (
-            <div className={className}>
+        return connectDropTarget(
+            <div
+                className={className}
+            >
                 {this.renderChildren()}
             </div>
         );
@@ -34,14 +52,36 @@ class ListView<T> extends React.Component<Props<T>> {
             data,
         } = this.props;
         return data
-            .map((child, index) =>
-                <ListViewItem key={index} data={child} />
-            );
+            .map((child, index) => {
+                return (
+                    <ListViewItem
+                        key={index}
+                        data={child}
+                    />
+                );
+            });
     }
 }
 
-export default styled(ListView)`
+const StyledListView = styled(ListView)`
     flex: 1;
     color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.secondary};
+    background: ${props => props.canDrop ? props.theme.background : props.theme.dropZone};
 `;
+
+const dropTargetSpec: DropTargetSpec<{}> = {
+    canDrop: (props: ListViewProps<number | string | object | boolean>, monitor: DropTargetMonitor) => {
+        return true;
+    }
+};
+
+const dropTargetCollector = (connector: DropTargetConnector, monitor: DropTargetMonitor) => {
+    return {
+        canDrop: monitor.canDrop(),
+        connectDropTarget: connector.dropTarget(),
+    };
+};
+
+export default DropTarget<ListViewProps<number | string | object | boolean>>
+    ('ListViewItem', dropTargetSpec, dropTargetCollector)(StyledListView);
