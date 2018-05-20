@@ -11,12 +11,14 @@ import {
     DropTargetMonitor,
     DropTargetSpec,
 } from 'react-dnd';
+import { Task } from '../../../../models/Task';
 
-interface ListViewProps<T> {
+interface ListViewProps {
     id?: string;
-    data: List<T>;
+    data: List<Task>;
     className?: string;
     theme?: Theme;
+    onDrop?: (id: number, status: string) => void;
 }
 
 interface DropTargetProps {
@@ -24,11 +26,11 @@ interface DropTargetProps {
     connectDropTarget: ConnectDropTarget;
 }
 
-type Props<T> = ListViewProps<T> & DropTargetProps;
+type Props = ListViewProps & DropTargetProps;
 
-class ListView<T> extends React.Component<Props<T>> {
+class ListView extends React.Component<Props> {
 
-    public constructor(props: Props<T>) {
+    public constructor(props: Props) {
         super(props);
         this.renderChildren = this.renderChildren.bind(this);
     }
@@ -40,9 +42,7 @@ class ListView<T> extends React.Component<Props<T>> {
         } = this.props;
 
         return connectDropTarget(
-            <div
-                className={className}
-            >
+            <div className={className}>
                 {this.renderChildren()}
             </div>
         );
@@ -67,6 +67,7 @@ class ListView<T> extends React.Component<Props<T>> {
 }
 
 const StyledListView = styled(ListView)`
+    position: relative;
     flex: 1;
     color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.secondary};
@@ -77,9 +78,18 @@ const StyledListView = styled(ListView)`
 `;
 
 const dropTargetSpec: DropTargetSpec<{}> = {
-    canDrop: (props: ListViewProps<number | string | object | boolean>, monitor: DropTargetMonitor) => {
+    canDrop: (props: ListViewProps, monitor: DropTargetMonitor) => {
         const item: DragDropListViewItem = monitor.getItem();
-        return props.id !== item.id;
+        return props.id !== item.status;
+    },
+    drop: (props: ListViewProps, monitor: DropTargetMonitor) => {
+        const handler = props.onDrop;
+        const item: DragDropListViewItem = monitor.getItem();
+        const id = item.id || 0;
+        const status = props.id || '';
+        if (handler) {
+            handler(id, status);
+        }
     }
 };
 
@@ -90,5 +100,5 @@ const dropTargetCollector = (connector: DropTargetConnector, monitor: DropTarget
     };
 };
 
-export default DropTarget<ListViewProps<number | string | object | boolean>>
+export default DropTarget<ListViewProps>
     ('ListViewItem', dropTargetSpec, dropTargetCollector)(StyledListView);

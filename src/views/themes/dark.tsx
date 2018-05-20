@@ -6,7 +6,7 @@ const dark: Theme = {
     background: '#333',
     dropZone: '#111',
     transitionProperty: 'background-color, color',
-    transitionDuration: '300ms',
+    transitionDuration: '200ms',
     transitionTiming: 'ease-in',
 };
 

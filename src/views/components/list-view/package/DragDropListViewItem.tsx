@@ -1,4 +1,5 @@
 
 export interface DragDropListViewItem {
-    id?: string;
+    id?: number;
+    status?: string;
 }

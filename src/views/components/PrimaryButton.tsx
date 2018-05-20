@@ -8,6 +8,9 @@ const PrimaryButton = styled.button`
     color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.primary};
     background: ${props => props.theme.background};
+    transition-property: ${props => props.theme.transitionProperty};
+    transition-duration: ${props => props.theme.transitionDuration};
+    transition-timing-function: ${props => props.theme.transitionTiming};
     &:hover {
         cursor: pointer;
         color: ${props => props.theme.background};
