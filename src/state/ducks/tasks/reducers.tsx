@@ -23,15 +23,13 @@ export class TasksState extends TasksStateRecord {
 
 export const tasksReducer = (state = new TasksState(), action: TasksActions) => {
     switch (action.type) {
-        case (types.UPDATE_TASK):
+        case (types.UPDATE_STATUS):
             return state.setIn(
                 ['tasks'],
                 state.tasks.map((task: Task) => {
-                    if (task.id === action.id) {
-                        return task
-                            .setIn(['status'], action.status);
-                    }
-                    return task;
+                    return task && task.id === action.id
+                        ? task.setIn(['status'], action.status)
+                        : task;
                 }),
         );
         default:

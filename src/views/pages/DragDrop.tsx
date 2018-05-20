@@ -11,7 +11,7 @@ import { Task } from '../../models/Task';
 import { getOpenTasks, getInProgressTasks, getCompleteTasks } from '../../state/ducks/tasks/selectors';
 import { Status } from '../../constants/Status';
 
-import { updateTask } from '../../state/ducks/tasks/index';
+import { updateStatus } from '../../state/ducks/tasks/index';
 import FlexColumn from '../components/FlexColumn';
 
 interface DragDropProps {
@@ -25,7 +25,7 @@ interface PropsFromState {
 }
 
 interface PropsFromDispatch {
-    updateTask?: typeof updateTask;
+    updateStatus?: typeof updateStatus;
 }
 
 type Props = DragDropProps & PropsFromState & PropsFromDispatch;
@@ -72,7 +72,7 @@ class DragDrop extends React.Component<Props> {
     }
 
     private handleDrop(id: number, status: Status) {
-        const handler = this.props.updateTask;
+        const handler = this.props.updateStatus;
         if (handler) {
             handler(id, status);
         }
@@ -100,7 +100,7 @@ const mapStateToProps = (state: RootState) => {
 const mapDispatchToProps = (dispatch: Dispatch<{}>): PropsFromDispatch => {
     return bindActionCreators(
     {
-        updateTask,
+        updateStatus,
     },
     dispatch);
 };
