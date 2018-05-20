@@ -19,4 +19,7 @@ export default styled(InfiniteGrid)`
     display: flex;
     flex-direction: column;
     background-color: ${props => props.theme.background};
+    transition-property: ${props => props.theme.transitionProperty};
+    transition-duration: ${props => props.theme.transitionDuration};
+    transition-timing-function: ${props => props.theme.transitionTiming};
 `;

@@ -3,7 +3,7 @@ import ListViewItem from './ListViewItem';
 import styled from 'styled-components';
 import { List } from 'immutable';
 import { Theme } from '../../../../models/Theme';
-
+import { DragDropListViewItem } from './DragDropListViewItem';
 import {
     ConnectDropTarget,
     DropTarget,
@@ -13,6 +13,7 @@ import {
 } from 'react-dnd';
 
 interface ListViewProps<T> {
+    id?: string;
     data: List<T>;
     className?: string;
     theme?: Theme;
@@ -49,12 +50,14 @@ class ListView<T> extends React.Component<Props<T>> {
 
     private renderChildren() {
         const {
+            id,
             data,
         } = this.props;
         return data
             .map((child, index) => {
                 return (
                     <ListViewItem
+                        containerId={id}
                         key={index}
                         data={child}
                     />
@@ -67,12 +70,16 @@ const StyledListView = styled(ListView)`
     flex: 1;
     color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.secondary};
-    background: ${props => props.canDrop ? props.theme.background : props.theme.dropZone};
+    background-color: ${props => props.canDrop ? props.theme.background : props.theme.dropZone};
+    transition-property: ${props => props.theme.transitionProperty};
+    transition-duration: ${props => props.theme.transitionDuration};
+    transition-timing-function: ${props => props.theme.transitionTiming};
 `;
 
 const dropTargetSpec: DropTargetSpec<{}> = {
     canDrop: (props: ListViewProps<number | string | object | boolean>, monitor: DropTargetMonitor) => {
-        return true;
+        const item: DragDropListViewItem = monitor.getItem();
+        return props.id !== item.id;
     }
 };
 

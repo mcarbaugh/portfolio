@@ -13,6 +13,7 @@ const DragDrop = (props: Props) => {
     return (
         <div id={'DragDrop'} className={props.className}>
             <ListView
+                id={'open'}
                 data={List([
                     'hello',
                     'world',
@@ -23,6 +24,7 @@ const DragDrop = (props: Props) => {
                 ])}
             />
             <ListView
+                id={'in-progess'}
                 data={List([
                     'hello',
                     'world',
@@ -33,6 +35,7 @@ const DragDrop = (props: Props) => {
                 ])}
             />
             <ListView
+                id={'complete'}
                 data={List([
                     'hello',
                     'world',

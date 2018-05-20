@@ -31,4 +31,7 @@ export default styled(ColorThemePicker)`
     color: ${props => props.theme.primary};
     background-color: ${props => props.theme.background};
     border-bottom: 1px solid ${props => props.theme.secondary};
+    transition-property: ${props => props.theme.transitionProperty};
+    transition-duration: ${props => props.theme.transitionDuration};
+    transition-timing-function: ${props => props.theme.transitionTiming};
 `;

@@ -28,4 +28,7 @@ export default styled(DataGridCell)`
     justify-content: center;
     font-size: 1em;
     box-sizing: border-box;
+    transition-property: ${props => props.theme.transitionProperty};
+    transition-duration: ${props => props.theme.transitionDuration};
+    transition-timing-function: ${props => props.theme.transitionTiming};
 `;

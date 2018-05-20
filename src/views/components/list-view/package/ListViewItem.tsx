@@ -9,6 +9,7 @@ import {
 } from 'react-dnd';
 
 interface ListViewItemProps {
+    containerId?: string;
     className?: string;
     data?: object | string | number | boolean;
 }
@@ -50,14 +51,19 @@ const StyledListViewItem = styled(ListViewItem)`
     border-color: ${props => props.theme.primary};
     background-color: ${props => props.theme.background};
     padding: 5px;
+    transition-property: ${props => props.theme.transitionProperty};
+    transition-duration: ${props => props.theme.transitionDuration};
+    transition-timing-function: ${props => props.theme.transitionTiming};
     & span {
         margin: auto;
     }
 `;
 
 const dragSourceSpec: DragSourceSpec<{}> = {
-    beginDrag: () => {
-        return {};
+    beginDrag: (props: ListViewItemProps) => {
+        return {
+            id: props.containerId,
+        };
     },
     canDrag: () => {
         return true;
