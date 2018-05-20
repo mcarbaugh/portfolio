@@ -7,13 +7,13 @@ const PrimaryButton = styled.button`
     border-radius: 2px;
     color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.primary};
-    background: ${props => props.theme.background};
+    background: ${props => props.theme.background1};
     transition-property: ${props => props.theme.transitionProperty};
     transition-duration: ${props => props.theme.transitionDuration};
     transition-timing-function: ${props => props.theme.transitionTiming};
     &:hover {
         cursor: pointer;
-        color: ${props => props.theme.background};
+        color: ${props => props.theme.background1};
         background: ${props => props.theme.primary};
     }
 `;

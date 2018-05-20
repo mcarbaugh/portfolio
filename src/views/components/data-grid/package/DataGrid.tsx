@@ -96,4 +96,17 @@ class DataGrid extends React.Component<DataGridProps, DataGridState> {
 
 export default styled(DataGrid)`
     flex: 1;
+    & div::-webkit-scrollbar {
+        background-color: ${props => props.theme.background2};
+    }
+    & div::-webkit-scrollbar-track {
+        border: 1px solid ${props => props.theme.background1};
+        background-color: ${props => props.theme.background2};
+    }
+    & div::-webkit-scrollbar-thumb {
+        background-color: ${props => props.theme.background1};
+    }
+    & div::-webkit-scrollbar-corner {
+        background-color: ${props => props.theme.background1};
+    }
 `;

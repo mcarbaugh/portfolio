@@ -84,7 +84,7 @@ const StyledDrapDrop = styled(DragDrop)`
     display: flex;
     flex-direction: row;
     align-items: stretch;
-    background-color: ${props => props.theme.background};
+    background-color: ${props => props.theme.background2};
 `;
 
 const WithContext = DragDropContext(HTML5Backend)(StyledDrapDrop);

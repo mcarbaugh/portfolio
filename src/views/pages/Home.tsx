@@ -24,7 +24,7 @@ const Home = (props: HomeProps) => {
 export default styled(Home)`
     flex: 1;
     color: ${props => props.theme.primary};
-    background-color: ${props => props.theme.background};
+    background-color: ${props => props.theme.background2};
     transition-property: ${props => props.theme.transitionProperty};
     transition-duration: ${props => props.theme.transitionDuration};
     transition-timing-function: ${props => props.theme.transitionTiming};

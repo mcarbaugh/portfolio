@@ -68,7 +68,7 @@ const StyledListViewItem = styled(ListViewItem)`
     border-width: 1px;
     border-style: solid;
     border-color: ${props => props.theme.primary};
-    background-color: ${props => props.theme.background};
+    background-color: ${props => props.theme.background1};
     transition-property: ${props => props.theme.transitionProperty};
     transition-duration: ${props => props.theme.transitionDuration};
     transition-timing-function: ${props => props.theme.transitionTiming};

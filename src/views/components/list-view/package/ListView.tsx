@@ -71,7 +71,7 @@ const StyledListView = styled(ListView)`
     flex: 1;
     color: ${props => props.theme.primary};
     border: 1px solid ${props => props.theme.secondary};
-    background-color: ${props => props.canDrop ? props.theme.background : props.theme.dropZone};
+    background-color: ${props => props.canDrop ? props.theme.background1 : props.theme.background2};
     transition-property: ${props => props.theme.transitionProperty};
     transition-duration: ${props => props.theme.transitionDuration};
     transition-timing-function: ${props => props.theme.transitionTiming};
